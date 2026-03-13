@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Card</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- 提示弹窗 -->
+  <aside class="tooltip" id="tooltip" role="alert" aria-live="polite">
+    <p class="tooltip-title">Hey you :)</p>
+    <p class="tooltip-text">That's just a prototype! You're not actually copying anything.</p>
+  </aside>
+
+  <!-- 卡片 -->
+  <article class="card">
+
+    <!-- 上半部分：图片区域 -->
+    <section class="card-top">
+      <header class="card-header">
+        <span class="card-number">03</span>
+        <h2 class="card-title">Image Models</h2>
+      </header>
+      <figure class="card-image-area">
+        <img src="/public/pic.jpg" alt="Decorative statue" />
+      </figure>
+    </section>
+
+    <!-- 下半部分：操作区域 -->
+    <section class="card-bottom">
+      <h3 class="card-bottom-title">Connect multiple image models</h3>
+      <p class="card-bottom-content">Enable multiple image models at the same time with one click.</p>
+
+      <div class="card-actions">
+
+        <!-- 用户登录状态 -->
+        <button class="user-badge" onclick="handleLogin()" aria-label="Logged in as Georgia">
+          <span class="badge-default">
+            <img class="avatar" src="/public/avatar.png" alt="Georgia's avatar" />
+            <span>Logged in as Georgia</span>
+          </span>
+          <span class="badge-copy">
+            Copy Authentication Key 
+            <img class="icon" src="/public/content_copy_24dp_1F1F1F_FILL1_wght400_GRAD0_opsz24.svg">
+          </span>
+        </button>
+
+        <!-- 授权按钮 -->
+        <button class="auth" onclick="handleAuth()" aria-label="Authenticate to Enable">
+          <span class="auth-text-default">Authenticate to Enable</span>
+          <span class="auth-text-loading" aria-hidden="true">
+            Authenticating
+            <span class="dots-container" aria-label="loading">
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </span>
+          </span>
+          <span class="auth-text-finish">Authenticated</span>
+        </button>
+
+      </div>
+    </section>
+
+  </article>
+
+  <script src="script.js"></script>
+</body>
+</html>

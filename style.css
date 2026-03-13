@@ -1,0 +1,311 @@
+/* ===== Reset ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== Base ===== */
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* ===== Tooltip ===== */
+.tooltip {
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: white;
+  color: #1C1C1C;
+  padding: 16px 20px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  opacity: 0;
+  pointer-events: none;
+  width: 280px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.tooltip.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.tooltip-title {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.tooltip-text {
+  color: #666;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+/* ===== Card ===== */
+.card {
+  width: clamp(240px, 90vw, 280px);
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.02);
+  transition: transform 0.8s cubic-bezier(0.34, 1.2, 0.64, 1);
+}
+
+.card:hover {
+  box-shadow: 2px 1px 30px rgba(0, 0, 0, 0.16);
+}
+
+
+/* 上半部分 */
+.card-top {
+  background: #ffe3ed;
+  padding: 12px 20px 0 20px;
+  aspect-ratio: 280 / 380;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  padding: 0;   
+}
+
+.card-header {
+  padding: 12px 20px;  /* padding 只给 header */
+  position: relative;
+  z-index: 1;
+}
+
+.card-number {
+  color: #ffe3ed;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.card:hover .card-number,
+.card:hover .card-title {
+  color: #fdcbdf;
+}
+
+.card-title {
+  color: #ffe3ed;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.card-image-area {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  margin: 0;
+}
+
+.card-image-area img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s cubic-bezier(0.34, 1.2, 0.64, 1);
+  opacity: 0.95;
+}
+
+
+.card:hover .card-image-area img {
+  transform: scale(1.03);
+  opacity: 1;
+}
+
+/* 下半部분 */
+.card-bottom {
+  background: #1C1C1C;
+  padding: 13px 16px 16px 16px;
+  border-radius: 12px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transform: translateY(78.6%);
+  transition: transform 0.4s cubic-bezier(0.34, 1.2, 0.64, 1);
+}
+
+.card:hover .card-bottom {
+  transform: translateY(0);
+}
+
+.card-bottom-title {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 350;
+  margin-bottom: 8px;
+}
+
+.card-bottom-content {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.4;
+  margin-bottom: 20px;
+}
+
+/* ===== Buttons ===== */
+.card-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.user-badge,
+.auth {
+  width: 100%;
+  height: 36px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.user-badge {
+  background-color: rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.user-badge:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.auth {
+  background-color: #ffe3ed;
+  font-size: 13px;
+  font-weight: 400;
+  position: relative;
+  overflow: hidden;
+}
+
+.auth:hover {
+  background-color: #fdcbdf;
+}
+
+.badge-default,
+.badge-copy {
+  position: absolute;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.9);
+  white-space: nowrap;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+}
+
+.badge-copy {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+}
+
+.icon {
+  width: 14px;
+  height: 14px;
+  filter: invert(1);
+}
+
+/* 默认状态 */
+.badge-default { transform: translateY(0);    opacity: 1; }
+.badge-copy    { transform: translateY(100%); opacity: 0; }
+
+/* authenticated 状态：default 往上滑走，copy 从下滑进来 */
+.user-badge.authenticated .badge-default { transform: translateY(-100%); opacity: 0; }
+.user-badge.authenticated .badge-copy    { transform: translateY(0);     opacity: 1; }
+
+.avatar {
+  height: 24px;
+  width: 24px;
+  border: 0.4px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  object-fit: cover;
+}
+
+.copy-icon {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+}
+
+
+/* ===== Auth button states ===== */
+.auth-text-default,
+.auth-text-loading,
+.auth-text-finish {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  width: 100%;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+}
+
+.auth-text-default { transform: translateY(0);     opacity: 1; }
+.auth-text-loading  { transform: translateY(100%);  opacity: 0; }
+.auth-text-finish   { transform: translateY(100%);  opacity: 0; }
+
+.auth.loading .auth-text-default  { transform: translateY(-100%); opacity: 0; }
+.auth.loading .auth-text-loading  { transform: translateY(0);     opacity: 1; }
+
+.auth.authenticated .auth-text-default { transform: translateY(-100%); opacity: 0; }
+.auth.authenticated .auth-text-loading { transform: translateY(-100%); opacity: 0; }
+.auth.authenticated .auth-text-finish  { transform: translateY(0);     opacity: 1; }
+
+/* ===== Loading dots ===== */
+.dots-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.dot {
+  width: 3px;
+  height: 3px;
+  background-color: #1C1C1C;
+  border-radius: 50%;
+  flex-shrink: 0;
+  animation: bounce 1s infinite;
+}
+
+.dot:nth-child(2) { animation-delay: 0.2s; }
+.dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes bounce {
+  0%, 80%, 100% { opacity: 0.8; transform: translateY(0); }
+  40%           { opacity: 1;   transform: translateY(-2px); }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 480px) {
+  .card { border-radius: 10px; }
+}
